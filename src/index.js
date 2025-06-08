@@ -8,8 +8,8 @@ export const getFitSize = ({
     const percentHeight = maxHeight / sourceHeight;
     const percent = percentHeight < percentWidth ? percentHeight : percentWidth;
     return {
-        width: sourceWidth * percent,
-        height: sourceHeight * percent
+        width: Math.ceil(sourceWidth * percent),
+        height: Math.ceil(sourceHeight * percent)
     };
 };
 
