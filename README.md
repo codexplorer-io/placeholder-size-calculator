@@ -8,7 +8,7 @@ Pure geometric utility functions for calculating aspect-ratio-preserving dimensi
 yarn add @codexporer.io/placeholder-size-calculator
 ```
 
-This package is completely standalone and has zero runtime dependencies.
+This package is completely standalone and has zero runtime and peer dependencies.
 
 ## Quick Start
 

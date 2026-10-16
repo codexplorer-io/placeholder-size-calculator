@@ -38,21 +38,36 @@ export function calculateThumbnailSize(image: { width: number; height: number },
 ## API Reference
 
 ### `getFitSize(options): { width: number; height: number }`
-| Field | Type | Description |
+Calculates dimensions fitting within `maxWidth` and `maxHeight` while preserving aspect ratio.
+
+| Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `sourceWidth` | `number` | Original width |
-| `sourceHeight` | `number` | Original height |
-| `maxWidth` | `number` | Maximum permissible width |
-| `maxHeight` | `number` | Maximum permissible height |
+| `sourceWidth` | `number` | Original source width |
+| `sourceHeight` | `number` | Original source height |
+| `maxWidth` | `number` | Maximum bounding width |
+| `maxHeight` | `number` | Maximum bounding height |
 
 ### `getFitWidth(options): number`
-Calculates proportional width constrained by `maxHeight`.
+Calculates proportional width constrained by a maximum height.
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `sourceWidth` | `number` | Original source width |
+| `sourceHeight` | `number` | Original source height |
+| `maxHeight` | `number` | Maximum bounding height |
 
 ### `getFitHeight(options): number`
-Calculates proportional height constrained by `maxWidth`.
+Calculates proportional height constrained by a maximum width.
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `sourceWidth` | `number` | Original source width |
+| `sourceHeight` | `number` | Original source height |
+| `maxWidth` | `number` | Maximum bounding width |
 
 ---
 
 ## Critical Rules & Guidelines
-1. **No External Dependencies**: Pure JS math functions; works everywhere.
-2. **Positive Dimension Input**: Ensure `sourceWidth` and `sourceHeight` are greater than 0 before calling.
+1. **Zero Runtime & Peer Dependencies**: Pure synchronous JavaScript functions with no external dependencies. Works in Node.js, browsers, React Native, and web workers.
+2. **Integer Ceiling Dimensions**: Both width and height are rounded up using `Math.ceil()` to guarantee elements fit within boundaries.
+3. **Positive Dimension Input**: Ensure `sourceWidth > 0` and `sourceHeight > 0` before calling to prevent division by zero or `NaN`.
